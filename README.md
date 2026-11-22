@@ -1,4 +1,4 @@
-# MediRoute: Intelligent Hospital Management System
+# MediRoute v2.0: Intelligent Hospital Management System
 
 Solves following problems:
 
