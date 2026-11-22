@@ -2,7 +2,7 @@
 
 Solves following problems:
 
-- Assigns priority score based on severity of patient from his/her past medical details by reading PDF (1 --> Low severity --- 5 --> High severity)
+- Assigns priority score based on severity of patient from his/her past medical details by reading PDF (1 --> High severity --- 5 --> Low severity)
 - Automatically decides who doctor should attend to first
 - Ambulance Shortest Path recommendation system works entirely offline and can be used in places with low reach of the internet
 
@@ -20,17 +20,22 @@ python -m pip install Flask && python app.py → open http://127.0.0.1:5000
 ```mermaid
 flowchart TD
     StartNode([Download a dataset containing parameters such as past visits, comorbidities, blood pressure, age, bmi, spo2, etc.]) ==> B[Load & process data, extract features, and engineer them according to the change in urgency levels]
-    B ==> C[Train the model using Linear Regression Algorithm from scikit-learn python library and save the weights and biases in model.csv file]
-    C ==> D[Test the model using train_test_split - 95% training and 5% testing - and calculate accuracy scores]
-    D ==> E[Using pymupdf library, read standard format uploaded pdf containing recent patient medical details to convert to text and process data into given features and use the model to predict the priority score for the given patient]
+    B ==> C[Train the model using Softmax Regression Algorithm from Tensorflow]
+    C ==> D[Test the model using train_test_split - 90% training and 10% testing - and calculate accuracy scores]
+    D ==> E[Using pymupdf library, read standard format uploaded pdf containing recent patient medical details
+    Convert them to text and process data into given features and use the model to predict the priority score for the given patient
+    Use softmax regression for outputs in range 1-5 by shifting down the range by 1 -> 0-4]
     E ==> EndNode([Output the priority in range 1-5 to the heap used in the flask server backend])
 ```
 
-## Improved Model Stats:
+## Model Accuracy Statistics:
 
-- Mean Squared Error (MSE): 0.2220
-- R² Score (Coefficient of Determination): 0.7867
-- Recall: 70.3454%
+- Macro Average Accuracy: 84%
+- Precision: Average Precision of 94% for critical patients
+- Recall:
+  - 94% for priority 1 patients (most critical)
+  - 95% for priority 2 patients (critical)
+  - `This very fact makes the model quite accurate and suitable for real-world deployment.`
 
 ## Ambulance Shortest Path Recommending System (BFS + Dijkstra)
 
