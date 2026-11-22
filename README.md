@@ -33,7 +33,7 @@ flowchart TD
 - Macro Average Accuracy: 84%
 - Precision: Average Precision of 94% for critical patients
 - Recall:
-  - 94% for priority 1 patients (most critical)
+  - 95% for priority 1 patients (most critical)
   - 95% for priority 2 patients (critical)
   - `This very fact makes the model quite accurate and suitable for real-world deployment.`
 
