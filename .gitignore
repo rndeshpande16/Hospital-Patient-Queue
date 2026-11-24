@@ -1,0 +1,15 @@
+# .gitignore
+__pycache__/
+TOKEN
+priority-assignation/softmax/.claude/
+priority-assignation/softmax/.gemini/
+priority-assignation/xgboost/.gemini/
+priority-assignation/xgboost/.claude/
+priority-assignation/tests/.claude/
+priority-assignation/tests/.gemini/
+priority-assignation/linear/.claude/
+priority-assignation/linear/.gemini/
+priority-assignation/logistic/.claude/
+priority-assignation/logistic/.gemini/
+priority-assignation/dataset/
+priority-assignation/ocr/
